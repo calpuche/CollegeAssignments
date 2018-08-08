@@ -1,0 +1,9 @@
+User - Jason
+Session - Jason
+Course - Chris
+Department - Chris 
+Section - Adrian
+Term - Carlos 
+Assignment - Stephanie
+Grade - Carlos 
+Final Grade - Stephanie

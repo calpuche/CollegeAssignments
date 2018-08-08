@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="fragments/head :: head (title='Grading Table')"></head>
+	<body>
+		<nav th:replace="fragments/navbar :: nav (pagename='gradintTable')"></nav>
+	  	
+	  	<div class="container">
+	  		<section id="tooltip" />
+	  		<div class="row">
+	  			<table class="grading table table-striped table-responsive">
+				  <thead>
+				  	<tr>
+				  	</tr>
+				  </thead>
+				  <tbody>
+				  </tbody>
+				</table>
+	  		</div>
+	  		
+	  		<div class="row">
+	  			<div class="col-sm-3 offset-sm-9  justify-content-sm-center">
+	  				<button id="changeGrades" class="btn btn-primary">Update Grades</button>
+	  			</div>
+	  		</div>
+
+		</div>
+	<script src="/js/gradingTable.js"></script>
+	</body>
+</html>
+ 

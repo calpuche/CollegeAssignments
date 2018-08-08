@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="fragments/head :: head (title='Manage Users')"></head>
+  <body>
+  	<nav th:replace="fragments/navbar :: nav (pagename='manageUsers')"></nav>
+  	
+  	<div class="container">
+  	
+  		<div th:if="${error}" class="row">
+	    		<div th:replace ="fragments/alerts :: danger (text='Invalid user attributes.')"></div>
+	    </div>
+	    <div th:if="${created}" class="row">
+	    		<div th:replace ="fragments/alerts :: success (text='User successfully created.')"></div>
+	    </div>
+	    <div th:if="${edited}" class="row">
+	    		<div th:replace ="fragments/alerts :: success (text='User successfully edited.')"></div>
+	    </div>
+	    <div th:if="${removed}" class="row">
+	    		<div th:replace ="fragments/alerts :: success (text='User successfully removed.')"></div>
+	    </div>
+	    
+	    <div class="row">
+	    		<h3>
+		    		<button type="button" class="btn btn-default" aria-label="Left Align" data-toggle="collapse" data-target="#newUser">
+		    		 	<span class="glyphicon glyphicon-align-left" aria-hidden="true" />
+		    			Add New User...
+		    		</button>
+	    		</h3>
+	    </div>
+	  	
+	  	<div id="newUser" class="row collapse">
+	  		<form th:action="@{/user/addUser}" th:object="${newUser}" method="post">
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="username-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{username}" class="form-control" placeholder="username" aria-describedby="username-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="firstname-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{firstName}" class="form-control" placeholder="first name" aria-describedby="first-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="lastname-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{lastName}" class="form-control" placeholder="last name" aria-describedby="lastname-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="address-addon"><span class="glyphicon glyphicon-home" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{address}" class="form-control" placeholder="address" aria-describedby="address-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="phone-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{phone}" class="form-control" placeholder="phone" aria-describedby="phone-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="date-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"/></span>
+				  <input type="date" th:field="*{dob}" class="form-control" placeholder="date" aria-describedby="date-addon" />
+				</div>
+				<br></br>
+			  	
+			  	<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="role-addon"><span class="glyphicon glyphicon-cog" aria-hidden="true"/></span>
+				  	<select th:field="*{roleId}" aria-describedby="role-addon" class="form-control" >
+						<option th:each="role : ${allRoles}" 
+					          th:value="${role.roleId}" 
+					          th:text="${role.getFormattedRole()}">Role name</option>
+				  </select>
+				</div>
+				<br></br>
+				
+				<button type="submit" class="btn btn-primary">Add User</button>
+
+		    </form>
+	  	</div>
+	  	
+	  	<div class="row">
+	    		<h3>View All Users</h3>
+	    </div>
+	  	
+	  	<div class="row">
+		  	<table class="table table-striped">
+		    		<tr>
+		    			<th>User ID</th>
+		    			<th>Role</th>
+		    			<th>Username</th>
+		    			<th>First Name</th>
+		    			<th>Last Name</th>
+		    			<th>Date of Birth</th>
+		    			<th>Claimed</th>
+		    			<th>Edit</th>
+		    			<th>Remove</th>
+		    		</tr>
+		    		<tr th:each="user : ${allUsers}">
+			    		<td th:text="${user.key.userId}" />
+			    		<td th:text="${user.value.getFormattedRole()}" />
+			    		<td th:text="${user.key.username}" />
+			    		<td th:text="${user.key.firstName}" />
+			    		<td th:text="${user.key.lastName}" />
+			    		<td th:text="${user.key.dob}" />
+			    		<td th:text="${user.key.password == null ? 'Unclaimed' : 'Claimed'}" />
+			    		<td>
+			    			<a th:href="@{/user/editUser/} + ${user.key.userId}">
+			    				<button type="submit" class="btn btn-warning btn-sm">Edit User</button>
+			    			</a>
+			    		</td>
+			    		<td>
+			    			<a th:href="@{/user/removeUser/} + ${user.key.userId}">
+			    				<button type="submit" class="btn btn-danger btn-sm">Remove User</button>
+			    			</a>
+			    		</td>
+			    	</tr>
+		    	</table>
+	  	</div>
+	   
+	</div>
+  </body>
+</html>

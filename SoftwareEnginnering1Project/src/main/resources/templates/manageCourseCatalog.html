@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head :: head (title='Manage Course Catalog')"></head>
+<body>
+	<nav
+		th:replace="fragments/navbar :: nav (pagename='manageCourse')"></nav>
+
+	<div class="container">
+
+		<div th:if="${error}" class="row">
+			<div
+				th:replace="fragments/alerts :: danger (text='Invalid department attributes.')"></div>
+		</div>
+		<div th:if="${removeError}" class="row">
+			<div
+				th:replace="fragments/alerts :: danger (text='Cannot Delete Department with Connected Courses.')"></div>
+		</div>
+			<div th:if="${errorCourse}" class="row">
+			<div
+				th:replace="fragments/alerts :: danger (text='Invalid Course Attributes.')"></div>
+		</div>
+		<div th:if="${created}" class="row">
+			<div
+				th:replace="fragments/alerts :: success (text='Department successfully created.')"></div>
+		</div>
+		<div th:if="${edited}" class="row">
+			<div
+				th:replace="fragments/alerts :: success (text='Department successfully edited.')"></div>
+		</div>
+		<div th:if="${removed}" class="row">
+			<div
+				th:replace="fragments/alerts :: success (text='Department successfully removed.')"></div>
+		</div>
+			<div th:if="${createdCourse}" class="row">
+			<div
+				th:replace="fragments/alerts :: success (text='Course successfully created.')"></div>
+		</div>
+		<div th:if="${editedCourse}" class="row">
+			<div
+				th:replace="fragments/alerts :: success (text='Course successfully edited.')"></div>
+		</div>
+		<div th:if="${removedCourse}" class="row">
+			<div
+				th:replace="fragments/alerts :: success (text='Course successfully removed.')"></div>
+		</div>
+		
+		<div class="row">
+			<h3>Manage Departments and Courses</h3>
+		</div>
+
+
+		<div class="row">
+			<h3>
+				<button type="button" class="btn btn-default"
+					aria-label="Left Align" data-toggle="collapse"
+					data-target="#newDepartment">
+					<span class="glyphicon glyphicon-align-left" aria-hidden="true" />
+					Add New Department
+				</button>
+			</h3>
+		</div>
+
+		<div id="newDepartment" class="row collapse">
+			<form th:action="@{/courseCatalog/addDepartment}"
+				th:object="${newDepartment}" method="post">
+
+
+				<div class="input-group col-md-6 col-sm-12">
+					<span class="input-group-addon" id="deptName-addon"><span
+						class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span> <input
+						type="text" th:field="*{deptName}" class="form-control"
+						placeholder="deptName" aria-describedby="deptName-addon" />
+				</div>
+				<br></br>
+
+				<div class="input-group col-md-6 col-sm-12">
+					<span class="input-group-addon" id="deptAbbreviation-addon"><span
+						class="glyphicon glyphicon-pencil" aria-hidden="true" /></span> <input
+						type="text" th:field="*{deptAbbreviation}" class="form-control"
+						placeholder="deptAbbreviation"
+						aria-describedby="deptAbbreviation-addon" />
+				</div>
+				<br></br>
+
+
+				<button type="submit" class="btn btn-primary">Add
+					Department</button>
+			</form>
+		</div>
+
+	<div class="row">
+			<h3>
+				<button type="button" class="btn btn-default"
+					aria-label="Left Align" data-toggle="collapse"
+					data-target="#newCourse">
+					<span class="glyphicon glyphicon-align-left" aria-hidden="true" />
+					Add New Course
+				</button>
+			</h3>
+		</div>
+
+		<div id="newCourse" class="row collapse">
+			<form th:action="@{/courseCatalog/addCourse}" th:object="${newCourse}"
+				method="post">
+
+				<div class="input-group col-md-6 col-sm-12">
+					<span class="input-group-addon" id="courseCredits-addon"><span
+						class="glyphicon glyphicon-pencil" aria-hidden="true" /></span> <input
+						type="text" th:field="*{courseCredits}" class="form-control"
+						placeholder="Course Credits"
+						aria-describedby="courseCredits-addon" />
+				</div>
+				<br></br>
+
+				<div class="input-group col-md-6 col-sm-12">
+					<span class="input-group-addon" id="courseName-addon"><span
+						class="glyphicon glyphicon-pencil" aria-hidden="true" /></span> <input
+						type="text" th:field="*{courseName}" class="form-control"
+						placeholder="Course Name" aria-describedby="courseName-addon" />
+				</div>
+				<br></br>
+
+				<div class="input-group col-md-6 col-sm-12">
+					<span class="input-group-addon" id="courseNumber-addon"><span
+						class="glyphicon glyphicon-pencil" aria-hidden="true" /></span> <input
+						type="text" th:field="*{courseNum}" class="form-control"
+						placeholder="Course Number" aria-describedby="courseNumber-addon" />
+				</div>
+				<br></br>
+
+				<div class="input-group col-md-6 col-sm-12">
+					<span class="input-group-addon" id="courseDescription-addon"><span
+						class="glyphicon glyphicon-pencil" aria-hidden="true" /></span> <input
+						type="text" th:field="*{courseDescription}" class="form-control"
+						placeholder="Course Description"
+						aria-describedby="courseDescription-addon" />
+				</div>
+				<br></br>
+
+				<div class="input-group col-md-6 col-sm-12">
+					<span class="input-group-addon" id="dept-addon"><span
+						class="glyphicon glyphicon-cog" aria-hidden="true" /></span> <select
+						th:field="*{deptId}" aria-describedby="dept-addon"
+						class="form-control">
+							<option th:each="department : ${allDepartments}"
+								th:value="${department.deptId}" th:text="${department.deptName}">Department
+								Name</option>
+					</select>
+				</div>
+				<br></br>
+
+				<button type="submit" class="btn btn-primary">Add Course</button>
+			</form>
+		</div>
+
+		<div class="row">
+			<table th:each="department : ${coursesInDepartmentMap}" class="table">
+				<tr>
+					<td>
+						<h3
+							th:text="${department.key.deptAbbreviation} +' -  ' + ${department.key.deptName}"></h3>
+						<a
+						th:href="@{/courseCatalog/editDepartment/} + ${department.key.deptId}">
+							<button type="submit" class="btn btn-warning btn-sm">
+								Edit Department
+							</button>
+					</a> <a
+						th:href="@{/courseCatalog/removeDepartment/} + ${department.key.deptId}">
+							<button type="submit" class="btn btn-danger btn-sm">
+								Remove Department
+							</button>
+					</a>
+					</td>
+				</tr>
+				<tr>
+					<table class="table table-striped">
+						<tr>
+							<th>Department</th>
+							<th>Course Number</th>
+							<th>Course Name</th>
+							<th>Course Credits</th>
+							<th>Course Description</th>
+							<th>Edit</th>
+							<th>Remove</th>
+						</tr>
+						<tr th:each="course : ${department.value}">
+							<td th:text="${department.key.deptAbbreviation}" />
+							<td th:text="${course.courseNum}" />
+							<td th:text="${course.courseName}" />
+							<td th:text="${course.courseCredits}" />
+							<td th:text="${course.courseDescription}" />
+							<td><a th:href="@{/courseCatalog/editCourse/} + ${course.courseId}">
+									<button type="submit" class="btn btn-warning btn-sm">Edit
+										Course</button>
+							</a></td>
+							<td><a
+								th:href="@{/courseCatalog/removeCourse/} + ${course.courseId}">
+									<button type="submit" class="btn btn-danger btn-sm">Remove
+										Course</button>
+							</a></td>
+						</tr>
+					</table>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</body>
+</html>

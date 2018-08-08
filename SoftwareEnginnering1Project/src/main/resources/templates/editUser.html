@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="fragments/head :: head (title='Edit User')"></head>
+  <body>
+  	<nav th:replace="fragments/navbar :: nav (pagename='editUsers')"></nav>
+  	
+  	<div class="container">
+  	
+  		<div th:if="${error}" class="row">
+	    		<div th:replace ="fragments/alerts :: danger (text='Invalid user attributes.')"></div>
+	    </div>
+	  	
+	  	<div class="row">
+	  		<form th:action="@{/user/editUser}" th:object="${userToEdit}" method="post">
+				<input type="hidden" th:field="*{userId}" />
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="username-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{username}" class="form-control" placeholder="username" aria-describedby="username-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="firstname-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{firstName}" class="form-control" placeholder="first name" aria-describedby="first-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="lastname-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{lastName}" class="form-control" placeholder="last name" aria-describedby="lastname-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="address-addon"><span class="glyphicon glyphicon-home" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{address}" class="form-control" placeholder="address" aria-describedby="address-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="phone-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{phone}" class="form-control" placeholder="phone" aria-describedby="phone-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="date-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"/></span>
+				  <input type="date" th:field="*{dob}" class="form-control" placeholder="date" aria-describedby="date-addon" />
+				</div>
+				<br></br>
+			  	
+			  	<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="role-addon"><span class="glyphicon glyphicon-cog" aria-hidden="true"/></span>
+				  	<select th:field="*{roleId}" aria-describedby="role-addon" class="form-control" >
+						<option th:each="role : ${allRoles}" 
+					          th:value="${role.roleId}" 
+					          th:text="${role.getFormattedRole()}">Role name</option>
+				  </select>
+				</div>
+				<br></br>
+				
+				<button type="submit" class="btn btn-primary">Edit User</button>
+
+		    </form>
+	  	</div>
+	   
+	</div>
+  </body>
+</html>

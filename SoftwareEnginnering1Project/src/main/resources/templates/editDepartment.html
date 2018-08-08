@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="fragments/head :: head (title='Edit Department')"></head>
+  <body>
+  	<nav th:replace="fragments/navbar :: nav (pagename='editDepartment')"></nav>
+  	
+  	<div class="container">
+  	
+  		<div th:if="${error}" class="row">
+	    		<div th:replace ="fragments/alerts :: danger (text='Invalid Department attributes.')"></div>
+	    </div>
+	  	
+	  	<div class="row">
+	  		<form th:action="@{/courseCatalog/editDepartment}" th:object="${departmentToEdit}" method="post">
+				<input type="hidden" th:field="*{deptId}" />
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="deptName-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{deptName}" class="form-control" placeholder="Department Name" aria-describedby="deptName-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="deptAbbreviation-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{deptAbbreviation}" class="form-control" placeholder="deptAbbreviation" aria-describedby="deptAbbreviation-addon" />
+				</div>
+				<br></br>
+				
+				
+				<button type="submit" class="btn btn-primary">Edit Department</button>
+
+		    </form>
+	  	</div>
+	   
+	</div>
+  </body>
+</html>

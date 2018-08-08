@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/head :: head (title='Section History')"></head>
+  <body>
+  <nav th:replace="fragments/navbar :: nav (pagename='sectionHistory')"></nav>
+  <div class = "container">
+    <h1> Section History </h1>
+ 		<div th:each="termToSection : ${termToSectionRecordListMap}">
+ 			<h4><span th:text="${termToSection.key.termSemester}"></span> <span th:text="${termToSection.key.termYear}"></span>
+ 			</h4>
+ 			<table class="table table-striped">
+ 				<thead>
+	 				<tr>
+	 					<th><b> Class Name </b></th>
+	 					<th><b> Day </b></th>
+	 					<th><b> Time </b></th>
+	 					<th><b> Total Students </b></th>
+	 					<th><b> Details </b></th>
+	 				</tr>
+ 				</thead>
+ 				<tbody>
+ 				<tr th:each="sectionRecord : ${termToSection.value}">
+ 					<td th:text="${sectionRecord.courseName}"></td>
+ 					<td th:text="${sectionRecord.section.sectionDay}"></td>
+ 					<td th:text="${sectionRecord.section.sectionTime}"></td>
+ 					<td th:text="${sectionRecord.listUsers.size()}"></td>
+ 					<td> <a class="btn btn-primary" th:href="@{/section/sectionDetails(sectionId=${sectionRecord.section.sectionId})}"> Details </a></td>
+ 				</tr>
+ 				</tbody>
+ 			</table>
+ 		</div>
+ </div>
+ <footer th:replace="fragments/footer :: footer (pagename='sectionHistory')"></footer>
+</body>
+</html>

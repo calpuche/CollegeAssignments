@@ -1,0 +1,17 @@
+image: java:8
+
+pipelines:
+  default:
+    - step:
+        script:
+          - ./gradlew build
+  branches:
+    master:
+      - step:
+          script:
+            - ./gradlew build
+            - chmod 0400 hilltop-online.pem
+            - ssh-keyscan -t rsa $PROD_URL >> ~/.ssh/known_hosts
+            - scp -i hilltop-online.pem build/libs/web*.jar ubuntu@$PROD_URL:~/hilltop-online.jar
+            - ssh -i hilltop-online.pem ubuntu@$PROD_URL sudo systemctl restart hilltop-online.service
+            - echo "Application Deployed to $PROD_URL"

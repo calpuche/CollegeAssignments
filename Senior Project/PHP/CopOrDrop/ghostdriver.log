@@ -1,0 +1,26 @@
+[INFO  - 2018-03-23T19:09:37.491Z] GhostDriver - Main - running on port 46923
+[INFO  - 2018-03-23T19:09:38.366Z] Session [bb7ec1a0-2ecd-11e8-a4ea-efe977538838] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-03-23T19:09:38.366Z] Session [bb7ec1a0-2ecd-11e8-a4ea-efe977538838] - page.customHeaders:  - {}
+[INFO  - 2018-03-23T19:09:38.366Z] Session [bb7ec1a0-2ecd-11e8-a4ea-efe977538838] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-03-23T19:09:38.366Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: bb7ec1a0-2ecd-11e8-a4ea-efe977538838
+[ERROR - 2018-03-23T19:09:39.138Z] Session [bb7ec1a0-2ecd-11e8-a4ea-efe977538838] - page.onError - msg: Error: Bootstrap's JavaScript requires jQuery. jQuery must be included before Bootstrap's JavaScript.
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-03-23T19:09:39.138Z] Session [bb7ec1a0-2ecd-11e8-a4ea-efe977538838] - page.onError - stack:
+  global code (https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-03-23T19:09:40.653Z] Session [bb7ec1a0-2ecd-11e8-a4ea-efe977538838] - page.onError - msg: Error: Bootstrap's JavaScript requires jQuery. jQuery must be included before Bootstrap's JavaScript.
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-03-23T19:09:40.653Z] Session [bb7ec1a0-2ecd-11e8-a4ea-efe977538838] - page.onError - stack:
+  global code (https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-03-23T19:09:42.664Z] Session [bb7ec1a0-2ecd-11e8-a4ea-efe977538838] - page.onError - msg: Error: Bootstrap's JavaScript requires jQuery. jQuery must be included before Bootstrap's JavaScript.
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-03-23T19:09:42.664Z] Session [bb7ec1a0-2ecd-11e8-a4ea-efe977538838] - page.onError - stack:
+  global code (https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js:6)
+
+  phantomjs://platform/console++.js:263 in error

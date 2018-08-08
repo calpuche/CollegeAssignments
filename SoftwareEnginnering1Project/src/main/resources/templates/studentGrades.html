@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: head (title='Login')"></head>
+
+<body>
+    <nav th:replace="fragments/navbar :: nav (pagename='login')"></nav>
+    <h1> Made it to grades</h1>
+
+    <div th:each="section : ${currentSections}">
+
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#"><span th:text="${section.courseName}"/></a></li>
+              </ul>
+        </div>
+    </div>
+</body>
+
+</html>

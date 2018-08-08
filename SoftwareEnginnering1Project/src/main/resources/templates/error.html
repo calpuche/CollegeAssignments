@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head th:replace="fragments/head :: head (title='Error')"></head>
+  <body>
+  	<nav th:replace="fragments/navbar :: nav (pagename='error')"></nav>
+  	
+  	<div class="jumbotron">
+  		<div class="container">
+  			<h3>Error <span th:text="${errorTitle}" /></h3>
+		    <h4 th:text="${errorText}">error text</h4>
+		    <p th:text="${errorTime}" />
+		    <br></br>
+		    <h4 th:text="${errorMessage}">error message</h4>
+  		</div>
+  	</div>
+    
+    
+  </body>
+</html>

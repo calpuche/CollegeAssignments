@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="fragments/head :: head (title='Edit Course')"></head>
+  <body>
+  	<nav th:replace="fragments/navbar :: nav (pagename='editCourse')"></nav>
+  	
+  	<div class="container">
+  	
+  		<div th:if="${errorCourseEdit}" class="row">
+	    		<div th:replace ="fragments/alerts :: danger (text='Invalid course attributes.')"></div>
+	    </div>
+	  	
+	  	<div class="row">
+	  		<form th:action="@{/courseCatalog/editCourse}" th:object="${courseToEdit}" method="post">
+				<input type="hidden" th:field="*{courseId}" />
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="courseNum-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{courseNum}" class="form-control" placeholder="Course Number" aria-describedby="courseNum-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="coursename-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{courseName}" class="form-control" placeholder="courseName" aria-describedby="courseName-addon" />
+				</div>
+				<br></br>
+				
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="courseCredits-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{courseCredits}" class="form-control" placeholder="Course Credits" aria-describedby="courseCredits-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="courseDescription-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{courseDescription}" class="form-control" placeholder="Course Description" aria-describedby="courseDescription-addon" />
+				</div>
+				<br></br>
+			  	
+			  	<div class="input-group col-md-6 col-sm-12">
+				  <span class="input-group-addon" id="department-addon"><span class="glyphicon glyphicon-cog" aria-hidden="true"/></span>
+				  	<select th:field="*{deptId}" aria-describedby="department-addon" class="form-control" >
+						<option th:each="department : ${allDepartments}" 
+					          th:value="${department.deptId}" 
+					          th:text="${department.getDeptName()}">Department</option>
+				  </select>
+				</div>
+				<br></br>
+				
+				<button type="submit" class="btn btn-primary">Edit Course</button>
+
+		    </form>
+	  	</div>
+	   
+	</div>
+  </body>
+</html>

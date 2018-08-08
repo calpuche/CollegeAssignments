@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head th:replace="fragments/head :: head (title='Info')"></head>
+  <body>
+   <h3 class="info">Your username is: <span th:text="${username}"/></h3>
+   
+   <a th:href="@{/user/login}">Go to login</a>
+
+  </body>
+</html>

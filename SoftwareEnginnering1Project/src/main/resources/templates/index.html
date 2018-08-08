@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="fragments/head :: head (title='Dashboard')"></head>
+	<body>
+		<nav th:replace="fragments/navbar :: nav (pagename='dashboard')"></nav>
+	  	
+	  	<div class="container">
+	  		<section id="error" />
+	  		<div class="row">
+	  			<h3>
+				Welcome, <span th:text="${user.firstName}" />
+				</h3>
+	  		</div>
+	  		<div class="col-md-8 col-sm-12 cal">
+	  			<table class="calendar table table-responsive">
+				  <thead>
+				    <tr>
+				      <th></th>
+				      <th>
+				        <span class="long">Monday</span>
+				        <span class="short">M</span>
+				      </th>
+				      <th>
+				        <span class="long">Tuesday</span>
+				        <span class="short">T</span>
+				      </th>
+				      <th>
+				        <span class="long">Wendsday</span>
+				        <span class="short">W</span>
+				      </th>
+				      <th>
+				        <span class="long">Thursday</span>
+				        <span class="short">R</span>
+				      </th>
+				      <th>
+				        <span class="long">Friday</span>
+				        <span class="short">F</span>
+				      </th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>8am</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>9am</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>10am</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>11am</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>12pm</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>1pm</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>2pm</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>3pm</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>4pm</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td class="hour" rowspan="2"><span>5pm</span></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				  </tbody>
+				</table>
+	  		</div>
+	  		<div class="col-md-4 col-sm-12 user-info">
+				<div class="input-group">
+				  <span class="input-group-addon" id="firstname-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/> First Name </span>
+				  <input type="text" th:value="${user.firstName}" class="form-control" disabled="true" aria-describedby="first-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group">
+				  <span class="input-group-addon" id="lastname-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/> Last Name </span>
+				  <input type="text" th:value="${user.lastName}" class="form-control" disabled="true" aria-describedby="lastname-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group">
+				  <span class="input-group-addon" id="address-addon"><span class="glyphicon glyphicon-home" aria-hidden="true"/> Address </span>
+				  <input type="text" th:value="${user.address}" class="form-control" disabled="true" aria-describedby="address-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group">
+				  <span class="input-group-addon" id="phone-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"/> Phone </span>
+				  <input type="text" th:value="${user.phone}" class="form-control" disabled="ture" aria-describedby="phone-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group">
+				  <span class="input-group-addon" id="date-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"/> Date of Birth </span>
+				  <input type="date" th:value="${user.dob}" class="form-control" disabled="ture" placeholder="date" aria-describedby="date-addon" />
+				</div>
+				<br></br>
+	  		</div>
+
+		</div>
+	<script src="/js/calendar.js"></script>
+	</body>
+</html>
+ 

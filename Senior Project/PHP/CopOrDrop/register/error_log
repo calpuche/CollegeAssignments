@@ -1,0 +1,16 @@
+[16-Oct-2017 01:31:39 UTC] PHP Parse error:  syntax error, unexpected 'require' (T_REQUIRE) in /home/calpuche/public_html/CopOrDrop/register/index.php on line 2
+[16-Oct-2017 01:31:53 UTC] PHP Parse error:  syntax error, unexpected 'require' (T_REQUIRE) in /home/calpuche/public_html/CopOrDrop/register/index.php on line 2
+[09-Nov-2017 01:13:57 UTC] PHP Warning:  include(session.php): failed to open stream: No such file or directory in /home/calpuche/public_html/CopOrDrop/register/index.php on line 2
+[09-Nov-2017 01:13:57 UTC] PHP Warning:  include(session.php): failed to open stream: No such file or directory in /home/calpuche/public_html/CopOrDrop/register/index.php on line 2
+[09-Nov-2017 01:13:57 UTC] PHP Warning:  include(): Failed opening 'session.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/calpuche/public_html/CopOrDrop/register/index.php on line 2
+[09-Nov-2017 01:14:10 UTC] PHP Warning:  require_once(../adodb5/adodb.inc.php): failed to open stream: No such file or directory in /home/calpuche/public_html/CopOrDrop/register/mydb.php on line 2
+[09-Nov-2017 01:14:10 UTC] PHP Fatal error:  require_once(): Failed opening required '../adodb5/adodb.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/calpuche/public_html/CopOrDrop/register/mydb.php on line 2
+[09-Nov-2017 01:14:13 UTC] PHP Warning:  require_once(../adodb5/adodb.inc.php): failed to open stream: No such file or directory in /home/calpuche/public_html/CopOrDrop/register/mydb.php on line 2
+[09-Nov-2017 01:14:13 UTC] PHP Fatal error:  require_once(): Failed opening required '../adodb5/adodb.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/calpuche/public_html/CopOrDrop/register/mydb.php on line 2
+[09-Nov-2017 01:14:13 UTC] PHP Warning:  require_once(../adodb5/adodb.inc.php): failed to open stream: No such file or directory in /home/calpuche/public_html/CopOrDrop/register/mydb.php on line 2
+[09-Nov-2017 01:14:13 UTC] PHP Fatal error:  require_once(): Failed opening required '../adodb5/adodb.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/calpuche/public_html/CopOrDrop/register/mydb.php on line 2
+[09-Nov-2017 01:14:14 UTC] PHP Warning:  require_once(../adodb5/adodb.inc.php): failed to open stream: No such file or directory in /home/calpuche/public_html/CopOrDrop/register/mydb.php on line 2
+[09-Nov-2017 01:14:14 UTC] PHP Fatal error:  require_once(): Failed opening required '../adodb5/adodb.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/calpuche/public_html/CopOrDrop/register/mydb.php on line 2
+[07-Dec-2017 03:16:49 UTC] PHP Fatal error:  Call to undefined function dbconnect() in /home/calpuche/public_html/CopOrDrop/register/index.php on line 109
+[07-Dec-2017 03:18:47 UTC] PHP Fatal error:  Call to undefined function dbconnect() in /home/calpuche/public_html/CopOrDrop/register/index.php on line 109
+[07-Dec-2017 03:20:03 UTC] PHP Fatal error:  Call to undefined function dbconnect() in /home/calpuche/public_html/CopOrDrop/register/index.php on line 109

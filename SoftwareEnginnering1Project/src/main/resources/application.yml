@@ -1,0 +1,51 @@
+spring:
+  profiles: default,dev,production
+logging:
+  level:
+    org.springframework: WARN
+    org.apache: WARN
+    com.hilltoponline: DEBUG
+    
+---
+spring:
+  profiles: default
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    url: jdbc:h2:mem:~/test
+    driverClassName: org.h2.Driver
+    username: test
+    password: db
+    platform: h2
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost/hilltoponline?autoReconnect=true&useSSL=false
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password:
+    platform: mysql
+    initialize: false
+
+---
+spring:
+  profiles: production
+  datasource:
+    url: jdbc:mysql://localhost/hilltoponline?autoReconnect=true&useSSL=false
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: fv14ODy7$Me6a6!Y
+    initialize: false
+logging:
+  level:
+    com.hilltoponline: INFO
+users:
+  registrar:
+    password: ho-r3gistr@r
+    hash: $2a$06$XvZ3h8NBs.1rWZZlwuPTieneFF0EdT07RO/14EIWbpt64Jcm5g6nG
+    sql: INSERT INTO Users (userId, username, password, firstName, lastName, address, phone, dob, roleId) VALUES (null, 'registrar', '$2a$06$XvZ3h8NBs.1rWZZlwuPTieneFF0EdT07RO/14EIWbpt64Jcm5g6nG', 'University', 'Registrar', '3001 South Congress Ave', '15124488400', '2017-01-01', 1);
+    

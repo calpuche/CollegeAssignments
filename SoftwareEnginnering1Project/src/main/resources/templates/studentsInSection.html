@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/head :: head (title='Section Details')"></head>
+  <body>
+  <nav th:replace="fragments/navbar :: nav (pagename='studentsInSection')"></nav>
+  <div class="container">
+    <h1><span th:text="${term.termSemester}"></span> <span th:text="${term.termYear}"></span> </h1>
+ 		
+ 				<h4>Students in <span th:text="${shr.courseName}"></span></h4>
+ 			
+        	
+        	<div th:if="${dropped}" class="row">
+            	<div th:replace ="fragments/alerts :: success (text='Student successfully dropped.')"></div>
+        	</div>
+ 			<table class = "table table-striped">
+ 				<thead>
+ 					<tr>
+ 						<th> <b>Student Name</b> </th>
+ 						<th> <b>Student ID </b></th>
+ 					</tr>
+ 				</thead>
+ 				<tbody>
+	 				<tr th:each="student : ${shr.listUsers}">
+	 					<form th:action="@{/section/sectionDetails}" th:object="${reg}" method="post">
+	 					<td><span th:text="${student.firstName}"></span> <span th:text="${student.lastName}"></span></td>
+	 					<td th:text="${student.userId}"></td>
+	 					<input type="hidden" th:name="userId" th:value="${student.userId}" />
+	 					<input type="hidden" th:name="sectionId" th:value="${shr.section.sectionId}" />
+	 					<td> <button class="btn btn-primary" type="submit" name="drop"> Drop </button> </td>
+	 					</form>
+	 				</tr>
+	 			</tbody>
+ 			</table>
+ 			<a href = "/section/viewSectionHistory"> Go Back </a>
+ 			</div>
+  <footer th:replace="fragments/footer :: footer (pagename='studentsInSection')"></footer>
+  </body>
+</html>

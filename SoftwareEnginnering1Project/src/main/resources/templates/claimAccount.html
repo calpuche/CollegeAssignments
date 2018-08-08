@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head th:replace="fragments/head :: head (title='Claim Account')"></head>
+  <body>
+  	<nav th:replace="fragments/navbar :: nav (pagename='claimAccount')"></nav>
+  	
+  	<div class="container">
+  		<h1>Claim your Account</h1>
+  		
+  		<div th:if="${error}" class="row">
+	    		<div th:replace ="fragments/alerts :: danger (text='Invalid data entry.')"></div>
+	    </div>
+	    
+	    <div class="row">
+	    
+		  <form th:action="@{/user/claimAccount}" th:object="${newUser}" method="post">
+				<div class="input-group">
+				  <span class="input-group-addon" id="firstname-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{firstName}" class="form-control" placeholder="first name" aria-describedby="first-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group">
+				  <span class="input-group-addon" id="lastname-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{lastName}" class="form-control" placeholder="last name" aria-describedby="lastname-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group">
+				  <span class="input-group-addon" id="phone-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"/></span>
+				  <input type="text" th:field="*{phone}" class="form-control" placeholder="phone" aria-describedby="phone-addon" />
+				</div>
+				<br></br>
+				
+				<div class="input-group">
+				  <span class="input-group-addon" id="date-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"/></span>
+				  <input type="date" th:field="*{dob}" class="form-control" placeholder="date" aria-describedby="date-addon" />
+				</div>
+				<br></br>
+			  	
+			  	<label for="password">Passwords do not match</label>
+			  	<div class="input-group">
+				  <span class="input-group-addon" id="password-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"/></span>
+				  <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="password" aria-describedby="password-addon" />
+				</div>
+				<br></br>
+				
+				<label for="passwordCheck">Passwords do not match</label>
+				<div class="input-group">
+				  <span class="input-group-addon" id="passwordCheck-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"/></span>
+				  <input type="password" id="passwordCheck" name="passwordCheck" class="form-control" placeholder="password" aria-describedby="passwordCheck-addon" />
+				</div>
+				<br></br>
+				
+				<button type="submit" class="btn btn-default">Claim Account</button>
+
+		    </form>
+	    
+	    </div>
+  	</div>  
+    <script src="/js/common.js"></script>
+  </body>
+</html>

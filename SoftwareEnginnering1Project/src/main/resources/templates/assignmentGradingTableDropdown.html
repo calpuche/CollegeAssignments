@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="fragments/head :: head (title='Grading Table')"></head>
+	<body>
+		<nav th:replace="fragments/navbar :: nav (pagename='gradintTable')"></nav>
+
+	  	<div class="container">
+	  		<div class="row" th:each="sectionRecord : ${sectionList}">
+	  			<h3 class="col-xs-8" th:text="${sectionRecord.course.courseName}" />
+	  			<h3>
+	  				<a class="col-xs-4" th:href="@{/grade/viewGradingTable/?sectionId=} + ${sectionRecord.section.sectionId}">
+    					<button type="submit" class="btn btn-default btn-sm">View Grading Table</button>
+    				</a>
+    			</h3>
+	  		</div>
+
+		</div>
+	</body>
+</html>

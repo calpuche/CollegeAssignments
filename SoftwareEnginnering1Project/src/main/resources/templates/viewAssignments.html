@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="fragments/head :: head (title='Manage Assignments')"></head>
+	<body>
+		<nav th:replace="fragments/navbar :: nav (pagename='assignments')" />
+		
+		<div class="container">
+			
+			<div th:if="${errorAddGroup}" class="row">
+		    		<div th:replace ="fragments/alerts :: danger (text='Error adding assignment group.')"></div>
+		    </div>
+		    <div th:if="${successAddGroup}" class="row">
+		    		<div th:replace ="fragments/alerts :: success (text='Assignment group added successfully.')"></div>
+		    </div>
+		    <div th:if="${errorAddAsg}" class="row">
+		    		<div th:replace ="fragments/alerts :: danger (text='Error adding assignment.')"></div>
+		    </div>
+		    <div th:if="${successAddAsg}" class="row">
+		    		<div th:replace ="fragments/alerts :: success (text='Assignment added successfully.')"></div>
+		    </div>
+		    
+		    <div th:if="${errorDelGroup}" class="row">
+		    		<div th:replace ="fragments/alerts :: danger (text='Error deleting assignment group.')"></div>
+		    </div>
+		    <div th:if="${successDelGroup}" class="row">
+		    		<div th:replace ="fragments/alerts :: success (text='Assignment group deleted successfully.')"></div>
+		    </div>
+		    <div th:if="${errorDelAsg}" class="row">
+		    		<div th:replace ="fragments/alerts :: danger (text='Error deleting assignment.')"></div>
+		    </div>
+		    <div th:if="${successDelAsg}" class="row">
+		    		<div th:replace ="fragments/alerts :: success (text='Assignment deleted successfully.')"></div>
+		    </div>
+		    
+		    
+			<h3 th:text="${section.course.courseName}" />	
+			<div class="row">
+				<table class="table table-striped">
+					<tbody>
+						<tr th:each="assignmentGroupAndAssignments : ${groupsToAssignmentsMap}">
+							<table class="table table-striped">
+								<thead>
+									<th><h4 th:text="${assignmentGroupAndAssignments.key.groupName}" /></th>
+									<th><h4 th:text="${assignmentGroupAndAssignments.key.groupWeight}" /></th>
+									<th>
+										<a th:href="@{/assignment/delGroup/(sectionId=${section.section.sectionId}, assignmentGroupId=${assignmentGroupAndAssignments.key.groupId})}">
+						    				<button type="button" class="btn btn-default btn-sm">
+									          <span class="glyphicon glyphicon-remove" aria-hidden="true" /> Remove
+									        </button>
+						    			</a>
+						    		</th>
+								</thead>
+								<tbody>
+									<tr th:each="assignment : ${assignmentGroupAndAssignments.value}">
+										<td><h6 th:text="${assignment.asgName}" /></td>
+										<td><h6: th:text="${assignment.asgWeight}" /></td>
+										<td>			
+											<a th:href="@{/assignment/delAsg/(sectionId=${section.section.sectionId}, assignmentId=${assignment.asgId})}">
+							    				<button type="button" class="btn btn-default btn-sm">
+										          <span class="glyphicon glyphicon-remove" aria-hidden="true" /> Remove
+										        </button>
+							    			</a>
+							    		</td>
+									</tr>
+									<tr>
+										Add Assignment...
+										<form th:action="@{'/assignment/addAsg/?sectionId=' + ${section.section.sectionId}}" th:object="${newAssignment}" method="post">
+											<input type='hidden' name='groupId' th:value="${assignmentGroupAndAssignments.key.groupId}" />
+											<td>
+												<div class="input-group">
+													<span class="input-group-addon" id="group-name-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+				  									<input type="text" th:field="*{asgName}" class="form-control" placeholder="name" aria-describedby="group-name-addon" />
+												</div>
+											</td>
+											<td>
+												<div class="input-group">
+													<span class="input-group-addon" id="group-weight-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+				  									<input type="text" th:field="*{asgWeight}" class="form-control" placeholder="weight (0-1)" aria-describedby="group-weight-addon" />
+												</div>
+											</td>
+											<td>
+												<button type="submit" class="btn btn-default btn-sm">
+										          <span class="glyphicon glyphicon-ok" aria-hidden="true" /> Add
+										        </button>
+											</td>
+										</form>
+									</tr>
+								</tbody>
+							</table>
+						</tr>
+						<tr>
+							<td>
+								New Assignment Group...
+								<form th:action="@{'/assignment/addGroup/?sectionId=' + ${section.section.sectionId}}" th:object="${newAssignmentGroup}" method="post">
+									<input type='hidden' name='sectionId' th:value="${section.section.sectionId}" />
+									<div class="input-group col-md-4 col-sm-12">
+										<span class="input-group-addon" id="group-name-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+		 									<input type="text" th:field="*{groupName}" class="form-control" placeholder="name" aria-describedby="group-name-addon" />
+									</div>
+									<div class="input-group col-md-4 col-sm-12">
+										<span class="input-group-addon" id="group-weight-addon"><span class="glyphicon glyphicon-edit" aria-hidden="true"/></span>
+		 									<input type="text" th:field="*{groupWeight}" class="form-control" placeholder="weight (0-1)" aria-describedby="group-weight-addon" />
+									</div>
+									<div class="input-group col-md-4 col-sm-12">
+										<button type="submit" class="btn btn-default btn-sm">
+								          <span class="glyphicon glyphicon-ok" aria-hidden="true" /> Add
+								        </button>
+								     </div>
+								</form>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+			</div>
+		</div>
+ 	</body>
+</html>
+
+

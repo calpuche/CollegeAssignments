@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head (title='ViewCourseCatalog')"></head>
+<body>
+<nav th:replace="fragments/navbar :: nav (pagename='courseCatalog/view')"></nav>
+
+<div class="container">
+	<h1>Course Catalog</h1>
+	<table th:each="department : ${coursesInDepartmentMap}" class="table">
+		<tr>
+			<td><h3 th:text="${department.key.deptName}" /></td>
+		</tr>
+		<tr>
+			<table class="table table-striped">
+				<tr>
+					<th>Department</th>
+					<th>Course Number</th>
+					<th>Course Name</th>
+					<th>Course Credits</th>
+					<th>Course Description</th>
+				</tr>
+				<tr th:each="course : ${department.value}">
+					<td th:text="${department.key.deptAbbreviation}" />
+					<td th:text="${course.courseNum}" />
+					<td th:text="${course.courseName}" />
+					<td th:text="${course.courseCredits}" />
+					<td th:text="${course.courseDescription}" />
+				</tr>
+			</table>
+		</tr>
+		</table>
+		</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: head (title='My Grades')"></head>
+
+<body>
+    <nav th:replace="fragments/navbar :: nav (pagename='My Grades')"></nav>
+    <div class = "container">
+    <h1> My Grades</h1>
+    </div>
+  <div class="container" th:if="${courseId != null}">
+      <table th:each="AssignmentGroup : ${assignmentGroupsWithAssignments}" class="table">
+        <tr>
+          <td><h3 th:text="${AssignmentGroup.key.groupName}" />     <h6 th:text="'Group Weight: ' + ${AssignmentGroup.key.groupWeight}" /></td>
+        </tr>
+        <tr>
+    			<table class="table table-striped">
+    				<tr>
+    					<th>Assignment Name</th>
+    					<th>Assignment Weight</th>
+              <th>Grade</th>
+    				</tr>
+        <tr th:each="assignment : ${AssignmentGroup.value}">
+          <td th:text="${assignment.asgName}" />
+          <td th:text="${assignment.asgWeight}" />
+          <td th:text="${assignmentWithGrade.get(assignment)}" />
+        </tr>
+        </table>
+      </tr>
+      </table>
+
+
+  </div>
+  <div class="container">
+<form method="GET" th:action="@{/grade/myGrades}">
+    <select aria-describedby="role-addon" class="form-control" name="course">
+    <option th:each="course : ${courseWithKey}"
+            th:value="${course.value}"
+            th:text="${course.key}">
+          Course name</option>
+    </select>
+    <br></br>
+    <button type="submit" class="btn btn-primary">Check Grades</button>
+  </form>
+</div>
+
+</body>
+
+</html>

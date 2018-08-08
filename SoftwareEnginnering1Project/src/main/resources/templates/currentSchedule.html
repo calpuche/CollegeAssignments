@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/head :: head (title='Current Sections')"></head>
+  <body>
+  <nav th:replace="fragments/navbar :: nav (pagename='viewAllSectionsByTerm')"></nav>
+    <center>
+    <h1> Your Sections in <span th:text="${term.termSemester}"></span> <span th:text="${term.termYear}"></span></h1>
+    </center>
+    <div class="container">
+    <div th:switch="${dropped}" class="row">
+    	<span th:case="true"><div th:replace ="fragments/alerts :: success (text='You\'ve successfully dropped a section.')"></div></span>
+    </div>
+ 	<table class="table table-striped">
+ 	<thead>
+ 		<tr>
+ 			<th> Name </th>
+ 			<th> Day </th>
+ 			<th> Time </th>
+ 			<th> Professor </th>
+ 			<th> Course Credits </th>
+ 			<th> Drop </th>
+ 		</tr>
+ 		</thead>
+ 		<tbody>
+ 			
+	 		<tr th:each="sectionRecord : ${currentSectionRecords}">
+	 			<form th:action="@{/section/enrollments}" method="post">
+				<td th:text="${sectionRecord.course.courseName}"> Course Name </td> 
+	 			<td th:text="${sectionRecord.section.sectionDay}"> Day </td>
+	 			<td th:text="${sectionRecord.section.sectionTime}"> Time </td>
+	 			<td th:text="${sectionRecord.user.lastName}"> professor name </td>
+	 			<td th:text="${sectionRecord.course.courseCredits}"> Key.Credits (Course Credits) </td>
+	 			<td> <button class="btn btn-danger" type = "submit" th:name="sectionId" th:value="${sectionRecord.section.sectionId}"> Drop </button> </td>
+	 			</form>
+	 		</tr>
+ 			
+ 		</tbody>
+ 	</table>
+ 	</div>
+ 	<footer th:replace="fragments/footer :: footer (pagename='currentSchedule')"></footer>
+  </body>
+</html>

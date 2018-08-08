@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="fragments/head :: head (title='Login')"></head>
+  <body>
+  	<nav th:replace="fragments/navbar :: nav (pagename='login')"></nav>
+  	
+  	<div class="container">
+	  	<h3>Login page</h3>
+	  	
+	    <div th:if="${error}" class="row">
+	    	<div th:replace ="fragments/alerts :: danger (text='Wrong user or password.')"></div>
+	    </div>
+	    <div th:if="${logout}" class="row">
+	    	<div th:replace ="fragments/alerts :: success (text='You\'ve been logged out.')"></div>
+	    </div>
+	    	
+	    <div class="row">
+	    	<form th:action="@{/user/login}" method="post">
+	    	
+		    	<div class="input-group">
+				  <span class="input-group-addon" id="username-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"/></span>
+				  <input type="text" name="username" class="form-control" placeholder="username" aria-describedby="username-addon" autofocus="true" />
+				</div>
+				<br></br>
+				
+		      	<div class="input-group">
+				  <span class="input-group-addon" id="password-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"/></span>
+				  <input type="password" name="password" class="form-control" placeholder="password" aria-describedby="password-addon" />
+				</div>
+		      	<br></br>
+		      	
+		    	<button type="submit" class="btn btn-primary">Submit</button>
+		    	<a class="btn btn-default" th:href="@{/user/claimAccount}" role="button">Claim Account</a>
+		    </form>
+		    
+	    </div>
+	    
+	</div>
+  </body>
+</html>
